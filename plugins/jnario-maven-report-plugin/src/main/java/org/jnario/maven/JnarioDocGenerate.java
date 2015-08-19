@@ -17,7 +17,6 @@ import java.util.Map.Entry;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.lib.macro.file.Path;
 import org.eclipse.xtend.maven.MavenProjectAdapter;
 import org.eclipse.xtend.maven.XtendTestCompile;
@@ -25,15 +24,6 @@ import org.eclipse.xtext.ISetup;
 import org.eclipse.xtext.xbase.file.ProjectConfig;
 import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
 import org.eclipse.xtext.xbase.file.SimpleWorkspaceConfig;
-
-import org.jnario.compiler.HtmlAssetsCompiler;
-import org.jnario.compiler.JnarioDocCompiler;
-import org.jnario.feature.FeatureStandaloneSetup;
-import org.jnario.report.Executable2ResultMapping;
-import org.jnario.report.HashBasedSpec2ResultMapping;
-import org.jnario.report.SpecResultParser;
-import org.jnario.spec.SpecStandaloneSetup;
-import org.jnario.suite.SuiteStandaloneSetup;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -137,8 +127,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		}
 	}
 
-	@Override
-	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
+	protected void compileTestSources(JnarioDocCompiler xtend2BatchCompiler) throws MojoExecutionException {
 		List<String> testCompileSourceRoots = Lists.newArrayList(project.getTestCompileSourceRoots());
 		String testClassPath = concat(File.pathSeparator, getTestClassPath());
 		if (sourceDirectory != null) {
@@ -154,8 +143,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		compileTestSources(docCompiler);
 	}
 
-	@Override
-	protected void compile(XtendBatchCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath)
+	protected void compile(JnarioDocCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath)
 			throws MojoExecutionException {
 		configureWorkspace(sourceDirectories, outputPath);
 		resourceSetProvider.get().eAdapters().clear();
