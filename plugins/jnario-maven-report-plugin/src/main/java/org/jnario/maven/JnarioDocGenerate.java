@@ -17,6 +17,7 @@ import java.util.Map.Entry;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.lib.macro.file.Path;
 import org.eclipse.xtend.maven.MavenProjectAdapter;
 import org.eclipse.xtend.maven.XtendTestCompile;
@@ -136,7 +137,8 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		}
 	}
 
-	protected void compileTestSources(JnarioDocCompiler xtend2BatchCompiler) throws MojoExecutionException {
+	@Override
+	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
 		List<String> testCompileSourceRoots = Lists.newArrayList(project.getTestCompileSourceRoots());
 		String testClassPath = concat(File.pathSeparator, getTestClassPath());
 		if (sourceDirectory != null) {
@@ -152,7 +154,8 @@ public class JnarioDocGenerate extends XtendTestCompile {
 		compileTestSources(docCompiler);
 	}
 
-	protected void compile(JnarioDocCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath)
+	@Override
+	protected void compile(XtendBatchCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath)
 			throws MojoExecutionException {
 		configureWorkspace(sourceDirectories, outputPath);
 		resourceSetProvider.get().eAdapters().clear();
