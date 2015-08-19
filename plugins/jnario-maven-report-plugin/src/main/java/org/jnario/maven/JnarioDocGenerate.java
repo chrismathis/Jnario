@@ -138,7 +138,7 @@ public class JnarioDocGenerate extends XtendTestCompile {
 	}
 
 	@Override
-	protected void compileTestSources(XtendBatchCompiler xtend2BatchCompiler) throws MojoExecutionException {
+	protected void compileTestSources(JnarioDocCompiler xtend2BatchCompiler) throws MojoExecutionException {
 		List<String> testCompileSourceRoots = Lists.newArrayList(project.getTestCompileSourceRoots());
 		String testClassPath = concat(File.pathSeparator, getTestClassPath());
 		if (sourceDirectory != null) {
