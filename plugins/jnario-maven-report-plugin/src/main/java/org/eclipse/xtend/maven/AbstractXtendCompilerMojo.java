@@ -23,8 +23,8 @@ import java.util.Set;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.eclipse.xtend.core.compiler.batch.XtendBatchCompiler;
 import org.eclipse.xtend.lib.macro.file.Path;
+import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.file.ProjectConfig;
 import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
 import org.eclipse.xtext.xbase.file.SimpleWorkspaceConfig;
@@ -48,7 +48,7 @@ public abstract class AbstractXtendCompilerMojo extends AbstractXtendMojo {
 	};
 
 	@Inject
-	protected Provider<XtendBatchCompiler> xtendBatchCompilerProvider;
+	protected Provider<XbaseCompiler> xtendBatchCompilerProvider;
 
 	/**
 	 * Xtend-File encoding argument for the compiler.
@@ -75,13 +75,13 @@ public abstract class AbstractXtendCompilerMojo extends AbstractXtendMojo {
 	@Inject
 	private RuntimeWorkspaceConfigProvider workspaceConfigProvider;
 
-	protected XtendBatchCompiler createXtendBatchCompiler() {
+	protected XbaseCompiler createXtendBatchCompiler() {
 		Injector injector = new XtendMavenStandaloneSetup().createInjectorAndDoEMFRegistration();
-		XtendBatchCompiler instance = injector.getInstance(XtendBatchCompiler.class);
+		XbaseCompiler instance = injector.getInstance(XbaseCompiler.class);
 		return instance;
 	}
 
-	protected void compile(XtendBatchCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath)
+	protected void compile(XbaseCompiler xtend2BatchCompiler, String classPath, List<String> sourceDirectories, String outputPath)
 			throws MojoExecutionException {
 		configureWorkspace(sourceDirectories, outputPath);
 		xtend2BatchCompiler.setResourceSetProvider(new MavenProjectResourceSetProvider(project));
