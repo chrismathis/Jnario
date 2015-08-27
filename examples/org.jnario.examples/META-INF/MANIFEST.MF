@@ -6,7 +6,6 @@ Bundle-Version: 1.0.0.qualifier
 Require-Bundle: org.mockito;bundle-version="1.8.4",
  org.objenesis;bundle-version="1.0.0",
  org.jnario.lib,
- org.eclipse.xtend.lib,
  com.google.guava,
  org.junit,
  org.eclipse.xtext.xbase.lib,
