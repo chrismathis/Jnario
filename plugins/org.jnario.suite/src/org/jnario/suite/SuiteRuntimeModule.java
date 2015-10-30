@@ -42,7 +42,6 @@ import org.eclipse.xtext.xbase.file.RuntimeWorkspaceConfigProvider;
 import org.eclipse.xtext.xbase.file.WorkspaceConfig;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
-import org.eclipse.xtext.xbase.resource.BatchLinkableResourceStorageFacade;
 import org.jnario.compiler.JnarioBatchCompiler;
 import org.jnario.conversion.JnarioJavaIDValueConverter;
 import org.jnario.doc.AbstractDocGenerator;
@@ -56,6 +55,7 @@ import org.jnario.jvmmodel.JnarioNameProvider;
 import org.jnario.jvmmodel.JnarioSignatureHashBuilder;
 import org.jnario.report.Executable2ResultMapping;
 import org.jnario.report.HashBasedSpec2ResultMapping;
+import org.jnario.resource.NonStoringBatchLinkableResourceStorageFacade;
 import org.jnario.scoping.JnarioResourceDescriptionStrategy;
 import org.jnario.suite.compiler.SuiteBatchCompiler;
 import org.jnario.suite.conversion.SuiteValueConverterService;
@@ -237,7 +237,7 @@ public class SuiteRuntimeModule extends org.jnario.suite.AbstractSuiteRuntimeMod
 	}
 
 	public Class<? extends IResourceStorageFacade> bindResourceStorageFacade() {
-		return BatchLinkableResourceStorageFacade.class;
+		return NonStoringBatchLinkableResourceStorageFacade.class;
 	}
 
 	public Class<? extends AbstractFileSystemSupport> bindAbstractFileSystemSupport() {
