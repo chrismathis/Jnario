@@ -5104,9 +5104,9 @@ rule__Method__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getMethodAccess().getIDTerminalRuleCall_0()); }
-	RULE_ID
-{ after(grammarAccess.getMethodAccess().getIDTerminalRuleCall_0()); }
+{ before(grammarAccess.getMethodAccess().getValidIDParserRuleCall_0()); }
+	ruleValidID
+{ after(grammarAccess.getMethodAccess().getValidIDParserRuleCall_0()); }
 )
 
 ;

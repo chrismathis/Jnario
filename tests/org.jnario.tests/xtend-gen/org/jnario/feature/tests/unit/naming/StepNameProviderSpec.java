@@ -82,7 +82,7 @@ public class StepNameProviderSpec {
   public Resource parseScenario(@Extension final CharSequence s) {
     Resource _xblockexpression = null;
     {
-      final String input = (("Feature: example\r\n" + s) + "\r\n");
+      final String input = (("Feature: example\n" + s) + "\n");
       _xblockexpression = this.modelStore.parseScenario(input);
     }
     return _xblockexpression;

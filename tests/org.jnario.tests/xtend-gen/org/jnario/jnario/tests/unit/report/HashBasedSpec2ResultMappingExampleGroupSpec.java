@@ -160,7 +160,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   @Named("supports nested specs")
   @Order(9)
   public void _supportsNestedSpecs() throws Exception {
-    this.m.parseSpec("describe \"Root\"{\n\tdescribe \"Child\"{\n\t\tfact \"Example 1\"{1 + 1 => 2}\n\t}\t\n}\n");
+    this.m.parseSpec("describe \"Root\"{\r\n\tdescribe \"Child\"{\r\n\t\tfact \"Example 1\"{1 + 1 => 2}\r\n\t}\t\r\n}\r\n");
     HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME = "RootChildSpec";
     this.passes("Example 1");
     ExampleGroup _exampleGroup = this.m.exampleGroup("Root");
@@ -177,7 +177,7 @@ public class HashBasedSpec2ResultMappingExampleGroupSpec extends HashBasedSpec2R
   @Named("supports nested specs referencing methods [PENDING]")
   @Order(10)
   public void _supportsNestedSpecsReferencingMethods() throws Exception {
-    this.m.parseSpec("describe String{\n\tdescribe charAt{\n\t\tfact \"Example 1\"{1 + 1 => 2}\n\t}\t\n}\n");
+    this.m.parseSpec("describe String{\r\n\tdescribe charAt{\r\n\t\tfact \"Example 1\"{1 + 1 => 2}\r\n\t}\t\r\n}\r\n");
     HashBasedSpec2ResultMappingExampleGroupSpec.CLASSNAME = "RootCharAtSpec";
     this.passes("Example 1");
     ExampleGroup _exampleGroup = this.m.exampleGroup("String");

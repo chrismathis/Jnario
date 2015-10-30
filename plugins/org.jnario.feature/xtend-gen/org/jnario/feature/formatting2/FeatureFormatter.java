@@ -19,6 +19,7 @@ import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBasicForLoopExpression;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XCastedExpression;
 import org.eclipse.xtext.xbase.XCatchClause;
 import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XCollectionLiteral;
@@ -30,6 +31,7 @@ import org.eclipse.xtext.xbase.XForLoopExpression;
 import org.eclipse.xtext.xbase.XIfExpression;
 import org.eclipse.xtext.xbase.XInstanceOfExpression;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
+import org.eclipse.xtext.xbase.XPostfixOperation;
 import org.eclipse.xtext.xbase.XReturnExpression;
 import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XSynchronizedExpression;
@@ -167,6 +169,7 @@ public class FeatureFormatter extends XbaseWithAnnotationsFormatter {
     this.format(_expression, document);
   }
   
+  @Override
   protected void _format(final XInstanceOfExpression xinstanceofexpression, @Extension final IFormattableDocument document) {
     JvmTypeReference _type = xinstanceofexpression.getType();
     this.format(_type, document);
@@ -269,6 +272,9 @@ public class FeatureFormatter extends XbaseWithAnnotationsFormatter {
     } else if (and instanceof XMemberFeatureCall) {
       _format((XMemberFeatureCall)and, document);
       return;
+    } else if (and instanceof XPostfixOperation) {
+      _format((XPostfixOperation)and, document);
+      return;
     } else if (and instanceof XWhileExpression) {
       _format((XWhileExpression)and, document);
       return;
@@ -295,6 +301,9 @@ public class FeatureFormatter extends XbaseWithAnnotationsFormatter {
       return;
     } else if (and instanceof XBlockExpression) {
       _format((XBlockExpression)and, document);
+      return;
+    } else if (and instanceof XCastedExpression) {
+      _format((XCastedExpression)and, document);
       return;
     } else if (and instanceof XClosure) {
       _format((XClosure)and, document);

@@ -146,7 +146,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public class MethodElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Method");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cValidIDParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
@@ -157,14 +157,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		
 		//Method:
-		//	ID ("(" (TypeName ("," TypeName)*)? ")")?;
+		//	ValidID ("(" (TypeName ("," TypeName)*)? ")")?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//ID ("(" (TypeName ("," TypeName)*)? ")")?
+		//ValidID ("(" (TypeName ("," TypeName)*)? ")")?
 		public Group getGroup() { return cGroup; }
 
-		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		//ValidID
+		public RuleCall getValidIDParserRuleCall_0() { return cValidIDParserRuleCall_0; }
 
 		//("(" (TypeName ("," TypeName)*)? ")")?
 		public Group getGroup_1() { return cGroup_1; }
@@ -481,8 +481,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//	modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* ("<"
 		//	typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 		//	name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
-		//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")?
-		//	// TODO Add RichString here
+		//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")? // TODO Add RichString here
 		//);
 		@Override public ParserRule getRule() { return rule; }
 
@@ -501,8 +500,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* ("<"
 		//typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 		//name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
-		//exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")?
-		//// TODO Add RichString here
+		//exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")? // TODO Add RichString here
 		//)
 		public Group getGroup() { return cGroup; }
 
@@ -530,8 +528,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* ("<"
 		//typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 		//name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
-		//exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")?
-		//// TODO Add RichString here
+		//exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")? // TODO Add RichString here
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//{Example.annotationInfo=current} (pending?="pending"? ("fact" | "facts") expr=XExpression expression=XBlockExpression?)
@@ -1567,9 +1564,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//RichStringElseIf returns RichStringElseIf:
 		//    "ELSEIF" if=XExpression then=InternalRichString
 		//;
-		// * /
-		//// --------------------- FROM Xtend.xtext
-		// CommonModifier:
+		// * / // --------------------- FROM Xtend.xtext
+		//CommonModifier:
 		//	"public" | "private" | "protected" | "package" | "abstract" | "static" | "dispatch" | "final" | "strictfp" | "native"
 		//	| "volatile" | "synchronized" | "transient";
 		@Override public ParserRule getRule() { return rule; }
@@ -1840,7 +1836,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Method:
-	//	ID ("(" (TypeName ("," TypeName)*)? ")")?;
+	//	ValidID ("(" (TypeName ("," TypeName)*)? ")")?;
 	public MethodElements getMethodAccess() {
 		return pMethod;
 	}
@@ -1885,8 +1881,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	modifiers+=MethodModifier (modifiers+=CommonModifier | modifiers+=MethodModifier)* ("<"
 	//	typeParameters+=JvmTypeParameter ("," typeParameters+=JvmTypeParameter)* ">")? (=> (returnType=JvmTypeReference
 	//	name=ValidID "(") | name=ValidID "(") (parameters+=Parameter ("," parameters+=Parameter)*)? ")" ("throws"
-	//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")?
-	//	// TODO Add RichString here
+	//	exceptions+=JvmTypeReference ("," exceptions+=JvmTypeReference)*)? (expression=XBlockExpression | ";")? // TODO Add RichString here
 	//);
 	public MemberElements getMemberAccess() {
 		return pMember;
@@ -2045,9 +2040,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//RichStringElseIf returns RichStringElseIf:
 	//    "ELSEIF" if=XExpression then=InternalRichString
 	//;
-	// * /
-	//// --------------------- FROM Xtend.xtext
-	// CommonModifier:
+	// * / // --------------------- FROM Xtend.xtext
+	//CommonModifier:
 	//	"public" | "private" | "protected" | "package" | "abstract" | "static" | "dispatch" | "final" | "strictfp" | "native"
 	//	| "volatile" | "synchronized" | "transient";
 	public CommonModifierElements getCommonModifierAccess() {

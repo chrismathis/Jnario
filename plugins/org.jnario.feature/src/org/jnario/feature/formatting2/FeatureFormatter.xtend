@@ -127,7 +127,7 @@ class FeatureFormatter extends XbaseWithAnnotationsFormatter {
 	}
 
 
-	def dispatch void format(XInstanceOfExpression xinstanceofexpression, extension IFormattableDocument document) {
+	override dispatch void format(XInstanceOfExpression xinstanceofexpression, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
 		format(xinstanceofexpression.getType(), document);
 		format(xinstanceofexpression.getExpression(), document);

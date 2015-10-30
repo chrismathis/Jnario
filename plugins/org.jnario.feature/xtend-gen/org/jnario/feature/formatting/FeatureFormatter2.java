@@ -17,6 +17,7 @@ import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBasicForLoopExpression;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XCastedExpression;
 import org.eclipse.xtext.xbase.XCatchClause;
 import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XCollectionLiteral;
@@ -26,7 +27,9 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XForLoopExpression;
 import org.eclipse.xtext.xbase.XIfExpression;
+import org.eclipse.xtext.xbase.XInstanceOfExpression;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
+import org.eclipse.xtext.xbase.XPostfixOperation;
 import org.eclipse.xtext.xbase.XReturnExpression;
 import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XSynchronizedExpression;
@@ -108,6 +111,9 @@ public class FeatureFormatter2 extends JnarioFormatter {
     } else if (background instanceof XMemberFeatureCall) {
       _format((XMemberFeatureCall)background, format);
       return;
+    } else if (background instanceof XPostfixOperation) {
+      _format((XPostfixOperation)background, format);
+      return;
     } else if (background instanceof XWhileExpression) {
       _format((XWhileExpression)background, format);
       return;
@@ -132,6 +138,9 @@ public class FeatureFormatter2 extends JnarioFormatter {
     } else if (background instanceof XBlockExpression) {
       _format((XBlockExpression)background, format);
       return;
+    } else if (background instanceof XCastedExpression) {
+      _format((XCastedExpression)background, format);
+      return;
     } else if (background instanceof XClosure) {
       _format((XClosure)background, format);
       return;
@@ -146,6 +155,9 @@ public class FeatureFormatter2 extends JnarioFormatter {
       return;
     } else if (background instanceof XIfExpression) {
       _format((XIfExpression)background, format);
+      return;
+    } else if (background instanceof XInstanceOfExpression) {
+      _format((XInstanceOfExpression)background, format);
       return;
     } else if (background instanceof XReturnExpression) {
       _format((XReturnExpression)background, format);

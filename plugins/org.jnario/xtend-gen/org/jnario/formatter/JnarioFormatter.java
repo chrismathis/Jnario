@@ -22,6 +22,7 @@ import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBasicForLoopExpression;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XCastedExpression;
 import org.eclipse.xtext.xbase.XCatchClause;
 import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XCollectionLiteral;
@@ -31,7 +32,9 @@ import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XFeatureCall;
 import org.eclipse.xtext.xbase.XForLoopExpression;
 import org.eclipse.xtext.xbase.XIfExpression;
+import org.eclipse.xtext.xbase.XInstanceOfExpression;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
+import org.eclipse.xtext.xbase.XPostfixOperation;
 import org.eclipse.xtext.xbase.XReturnExpression;
 import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XSynchronizedExpression;
@@ -298,6 +301,9 @@ public class JnarioFormatter extends XbaseWithAnnotationsFormatter {
     } else if (table instanceof XMemberFeatureCall) {
       _format((XMemberFeatureCall)table, format);
       return;
+    } else if (table instanceof XPostfixOperation) {
+      _format((XPostfixOperation)table, format);
+      return;
     } else if (table instanceof XWhileExpression) {
       _format((XWhileExpression)table, format);
       return;
@@ -322,6 +328,9 @@ public class JnarioFormatter extends XbaseWithAnnotationsFormatter {
     } else if (table instanceof XBlockExpression) {
       _format((XBlockExpression)table, format);
       return;
+    } else if (table instanceof XCastedExpression) {
+      _format((XCastedExpression)table, format);
+      return;
     } else if (table instanceof XClosure) {
       _format((XClosure)table, format);
       return;
@@ -336,6 +345,9 @@ public class JnarioFormatter extends XbaseWithAnnotationsFormatter {
       return;
     } else if (table instanceof XIfExpression) {
       _format((XIfExpression)table, format);
+      return;
+    } else if (table instanceof XInstanceOfExpression) {
+      _format((XInstanceOfExpression)table, format);
       return;
     } else if (table instanceof XReturnExpression) {
       _format((XReturnExpression)table, format);

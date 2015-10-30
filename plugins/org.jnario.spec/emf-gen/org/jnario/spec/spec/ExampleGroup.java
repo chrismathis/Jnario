@@ -20,13 +20,13 @@ import org.jnario.Specification;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.jnario.spec.spec.ExampleGroup#getPreamble <em>Preamble</em>}</li>
  *   <li>{@link org.jnario.spec.spec.ExampleGroup#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link org.jnario.spec.spec.ExampleGroup#getTargetOperation <em>Target Operation</em>}</li>
  *   <li>{@link org.jnario.spec.spec.ExampleGroup#getContract <em>Contract</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.jnario.spec.spec.SpecPackage#getExampleGroup()
  * @model

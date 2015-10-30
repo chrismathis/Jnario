@@ -34,7 +34,8 @@ public class SpecResourceDescriptionStrategy extends JnarioResourceDescriptionSt
   public String isRoot(final ExampleGroup exampleGroup) {
     String _xifexpression = null;
     EObject _eContainer = exampleGroup.eContainer();
-    if ((!(_eContainer instanceof ExampleGroup))) {
+    boolean _not = (!(_eContainer instanceof ExampleGroup));
+    if (_not) {
       _xifexpression = SpecResourceDescriptionStrategy.TRUE;
     } else {
       _xifexpression = SpecResourceDescriptionStrategy.FALSE;

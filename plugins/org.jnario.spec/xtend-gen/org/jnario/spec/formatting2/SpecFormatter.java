@@ -20,6 +20,7 @@ import org.eclipse.xtext.xbase.XAssignment;
 import org.eclipse.xtext.xbase.XBasicForLoopExpression;
 import org.eclipse.xtext.xbase.XBinaryOperation;
 import org.eclipse.xtext.xbase.XBlockExpression;
+import org.eclipse.xtext.xbase.XCastedExpression;
 import org.eclipse.xtext.xbase.XCatchClause;
 import org.eclipse.xtext.xbase.XClosure;
 import org.eclipse.xtext.xbase.XCollectionLiteral;
@@ -31,6 +32,7 @@ import org.eclipse.xtext.xbase.XForLoopExpression;
 import org.eclipse.xtext.xbase.XIfExpression;
 import org.eclipse.xtext.xbase.XInstanceOfExpression;
 import org.eclipse.xtext.xbase.XMemberFeatureCall;
+import org.eclipse.xtext.xbase.XPostfixOperation;
 import org.eclipse.xtext.xbase.XReturnExpression;
 import org.eclipse.xtext.xbase.XSwitchExpression;
 import org.eclipse.xtext.xbase.XSynchronizedExpression;
@@ -179,6 +181,7 @@ public class SpecFormatter extends JnarioFormatter {
     this.format(_expression, document);
   }
   
+  @Override
   protected void _format(final XInstanceOfExpression xinstanceofexpression, @Extension final IFormattableDocument document) {
     JvmTypeReference _type = xinstanceofexpression.getType();
     this.format(_type, document);
@@ -268,6 +271,9 @@ public class SpecFormatter extends JnarioFormatter {
     } else if (examplegroup instanceof XMemberFeatureCall) {
       _format((XMemberFeatureCall)examplegroup, document);
       return;
+    } else if (examplegroup instanceof XPostfixOperation) {
+      _format((XPostfixOperation)examplegroup, document);
+      return;
     } else if (examplegroup instanceof XWhileExpression) {
       _format((XWhileExpression)examplegroup, document);
       return;
@@ -297,6 +303,9 @@ public class SpecFormatter extends JnarioFormatter {
       return;
     } else if (examplegroup instanceof XBlockExpression) {
       _format((XBlockExpression)examplegroup, document);
+      return;
+    } else if (examplegroup instanceof XCastedExpression) {
+      _format((XCastedExpression)examplegroup, document);
       return;
     } else if (examplegroup instanceof XClosure) {
       _format((XClosure)examplegroup, document);

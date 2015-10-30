@@ -38,16 +38,16 @@
 <ul><li><p id="Test1_Test1" class="example notrun"><strong>'''Test1''' => "Test1"</strong></p>
 </li><li><p id="Test2_Test2" class="example notrun"><strong>''' Test2''' => "Test2"</strong></p>
 </li><li><p id="Test3_Test3" class="example notrun"><strong>''' Test3''' => "Test3"</strong></p>
-</li><li><p id="Test4_Line2_Test4_nLine2" class="example notrun"><strong>''' Test4 Line2''' => " Test4\nLine2"</strong></p>
-</li><li><p id="Test5_Line2_Line3_Test5_n_Line2_nLine3" class="example notrun"><strong>''' Test5 Line2 Line3''' => "    Test5\n   Line2\nLine3"</strong></p>
+</li><li><p id="Test4_Line2_q_Test4_nLine2" class="example notrun"><strong>''' Test4 Line2''' => q[" Test4\nLine2"]</strong></p>
+</li><li><p id="Test5_Line2_Line3_q_Test5_n_Line2_nLine3" class="example notrun"><strong>''' Test5 Line2 Line3''' => q["    Test5\n   Line2\nLine3"]</strong></p>
 </li><li><p id="Test_Test" class="example notrun"><strong>'''Test   ''' => "Test   "</strong></p>
-</li><li><p id="Test_Test2_Test_nTest2" class="example notrun"><strong>''' Test Test2   ''' => "Test\nTest2   "</strong></p>
-</li><li><p id="Line1_Line2_Line1_n_nLine2" class="example notrun"><strong>''' Line1 Line2''' => "Line1\n\nLine2"</strong></p>
-</li><li><p id="Line3_Line4_Line3_n_nLine4" class="example notrun"><strong>'''Line3 Line4''' => "Line3\n\nLine4"</strong></p>
-</li><li><p id="Test_n_n_assertEquals_Test" class="example notrun"><strong>"Test\n   \n".assertEquals[''' Test ''']</strong></p>
-</li><li><p id="Test_Test_n" class="example notrun"><strong>'''Test ''' => "Test\n"</strong></p>
-</li><li><p id="Test6_Test6_n" class="example notrun"><strong>''' Test6 ''' => "Test6\n"</strong></p>
-</li><li><p id="Test111_assertEquals_Test111_n" class="example notrun"><strong>'''Test111 '''.assertEquals["Test111\n"]</strong></p>
+</li><li><p id="Test_Test2_q_Test_nTest2" class="example notrun"><strong>''' Test Test2   ''' => q["Test\nTest2   "]</strong></p>
+</li><li><p id="Line1_Line2_q_Line1_n_nLine2" class="example notrun"><strong>''' Line1 Line2''' => q["Line1\n\nLine2"]</strong></p>
+</li><li><p id="Line3_Line4_q_Line3_n_nLine4" class="example notrun"><strong>'''Line3 Line4''' => q["Line3\n\nLine4"]</strong></p>
+</li><li><p id="q_Test_n_n_assertEquals_Test" class="example notrun"><strong>q["Test\n   \n"].assertEquals[''' Test ''']</strong></p>
+</li><li><p id="Test_q_Test_n" class="example notrun"><strong>'''Test ''' => q["Test\n"]</strong></p>
+</li><li><p id="Test6_q_Test6_n" class="example notrun"><strong>''' Test6 ''' => q["Test6\n"]</strong></p>
+</li><li><p id="q_Test111_n_assertEquals_Test111" class="example notrun"><strong>q["Test111\n"].assertEquals['''Test111 ''']</strong></p>
 </li></ul>
 							</div>
 						    <div class="tab-pane" id="source">
@@ -69,42 +69,46 @@ Test2''' =&gt; &quot;Test2&quot;
 
   fact '''
     Test4
-   Line2''' =&gt; &quot; Test4\nLine2&quot;
+   Line2''' =&gt; q(&quot; Test4\nLine2&quot;)
 
   fact '''
     Test5
    Line2
-Line3''' =&gt; &quot;    Test5\n   Line2\nLine3&quot;
+Line3''' =&gt; q(&quot;    Test5\n   Line2\nLine3&quot;)
 
   fact '''Test   ''' =&gt; &quot;Test   &quot;
 
   fact '''
 Test
-Test2   ''' =&gt; &quot;Test\nTest2   &quot;
+Test2   ''' =&gt; q(&quot;Test\nTest2   &quot;)
 
   fact '''
 Line1
 
-Line2''' =&gt; &quot;Line1\n\nLine2&quot;
+Line2''' =&gt; q(&quot;Line1\n\nLine2&quot;)
 
   fact '''Line3
 
-Line4''' =&gt; &quot;Line3\n\nLine4&quot;
+Line4''' =&gt; q(&quot;Line3\n\nLine4&quot;)
 
-  fact &quot;Test\n   \n&quot;.assertEquals('''
+  fact q(&quot;Test\n   \n&quot;).assertEquals('''
 Test
    
 ''') 
 
   fact '''Test
-   ''' =&gt; &quot;Test\n&quot;
+    ''' =&gt; q(&quot;Test\n&quot;)
   
   fact '''
 Test6
-   ''' =&gt; &quot;Test6\n&quot;
+    ''' =&gt; q(&quot;Test6\n&quot;)
    
-    fact '''Test111
-   '''.assertEquals(&quot;Test111\n&quot;)
+    fact q(&quot;Test111\n&quot;).assertEquals('''Test111
+        ''')
+   
+    def q(String s) {
+    s.replace(&quot;\n&quot;, System.getProperty(&quot;line.separator&quot;))
+    }
 }
 </pre>
 						    </p></div>

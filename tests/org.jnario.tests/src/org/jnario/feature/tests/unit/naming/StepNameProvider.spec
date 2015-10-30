@@ -79,7 +79,7 @@ describe StepNameProvider{
 		}
 		
 	}
-	
+
 	context ^describe(Feature){
 		fact "removes multilines parameters"{
 			parseScenario('''

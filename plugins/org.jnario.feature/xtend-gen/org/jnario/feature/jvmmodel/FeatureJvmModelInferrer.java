@@ -329,7 +329,8 @@ public class FeatureJvmModelInferrer extends JnarioJvmModelInferrer {
     this.translateAnnotations(inferredJvmType, _annotations);
     final Background background = feature.getBackground();
     boolean _and = false;
-    if (!(!(scenario instanceof Background))) {
+    boolean _not = (!(scenario instanceof Background));
+    if (!_not) {
       _and = false;
     } else {
       boolean _notEquals = (!Objects.equal(background, null));
